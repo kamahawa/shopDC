@@ -10,16 +10,16 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
-Route::get('/test', 'HomeController@test');
+Route::get('/', 'WelcomeController@index');
+Route::get('logout', 'Auth\LoginController@logout');
 
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'level.mod']], function () {
@@ -51,6 +51,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'level.mod']], funct
 		Route::get('edit/{id}', ['as' => 'admin.user.getEdit', 'uses' => 'UserController@getEdit']);
 		Route::post('edit/{id}', ['as' => 'admin.user.postEdit', 'uses' => 'UserController@postEdit']);
 	});
+
+	Route::get('home', 'HomeController@index');
 });
 
 Route::get('loai-san-pham/{id}/{tenloai}', ['as' => 'loaisanpham', 'uses' => 'WelcomeController@loaisanpham']);
