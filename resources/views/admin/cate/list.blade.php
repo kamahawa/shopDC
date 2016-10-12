@@ -1,4 +1,4 @@
-@extends('...layouts.master')
+@extends('admin.layouts.master')
 @section('controller', 'Category')
 @section('action', 'List')
 @section('content')

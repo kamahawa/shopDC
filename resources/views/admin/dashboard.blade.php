@@ -1,8 +1,6 @@
 @extends('admin.layouts.master')
-@section('title', 'Dashboard')
-
+@section('title', 'Home')
 @section('content')
-
 	<div class="row">
 		<div class="col-xs-12 col-md-6 col-lg-3">
 			<div class="panel panel-blue panel-widget ">
