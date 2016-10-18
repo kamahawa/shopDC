@@ -19,7 +19,8 @@ class WelcomeController extends Controller
 	public function loaisanpham($id)
 	{
 		//$product_cate = DB::table('products')->select('id','name','image','price','alias','cate_id')->where('cate_id',$id)->get();
-		$product_cate = DB::table('products')->select('id', 'name', 'image', 'price', 'alias', 'cate_id')->where('cate_id', $id)->paginate(1);
+		// paginate la method dung de phan trang
+		$product_cate = DB::table('products')->select('id', 'name', 'image', 'price', 'alias', 'cate_id')->where('cate_id', $id)->paginate(9);
 		if(count($product_cate) == 0)
 		{
 			$cate = DB::table('cates')->select('parent_id')->where('id', $id)->first();

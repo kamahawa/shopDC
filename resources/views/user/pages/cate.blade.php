@@ -112,6 +112,9 @@
                     @endforeach
                   </ul>
                   <div class="pagination pull-right">
+                  <!--
+                    phan trang bang method paginate() o controller
+                  -->
                     <ul>
                       @if($product_cate->currentPage() != 1)
                       <li><a href="{!! str_replace('/?', '?', $product_cate->url($product_cate->currentPage() - 1)) !!}">Prev</a></li>
