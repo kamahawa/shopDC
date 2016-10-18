@@ -26,6 +26,7 @@ class ProductRequest extends FormRequest
 		return [
 			"sltParent" => "required",
 			"txtName" => "required|unique:products,name",
+			"txtPrice" => "required",
 			"fImages" => "required|image",
 		];
 	}
@@ -36,6 +37,7 @@ class ProductRequest extends FormRequest
 			"sltParent.required" => "Please choose category",
 			"txtName.required" => "Please enter product name",
 			"txtName.unique" => "Product name is exits",
+			"txtPrice.required" => "Please enter price",
 			"fImages.required" => "Please choose images",
 			"fImages.image" => "Please choose right images file",
 		];

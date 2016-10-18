@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Admin @yield('title')</title>
-<!-- theme -->
-<link href="{{ URL::asset('public/admin/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('public/admin/css/datepicker3.css') }}" rel="stylesheet">
-<link href="{{ URL::asset('public/admin/css/styles.css') }}" rel="stylesheet">
-
-<!--Icons-->
-<script src="{{ URL::asset('public/admin/js/lumino.glyphs.js') }}"></script>
-
-<link href="{{ URL::asset('public/css/common.css') }}" rel="stylesheet">
-
-<!--[if lt IE 9]>
-<script src="{{ URL::asset('public/admin/js/html5shiv.js') }}"></script>
-<script src="{{ URL::asset('public/admin/js/respond.min.js') }}"></script>
-<![endif]-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin @yield('title')</title>
+	<!-- theme -->
+	<link href="{{ URL::asset('public/admin/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('public/admin/css/datepicker3.css') }}" rel="stylesheet">
+	<link href="{{ URL::asset('public/admin/css/styles.css') }}" rel="stylesheet">
+	<!--Icons-->
+	<script src="{{ URL::asset('public/admin/js/lumino.glyphs.js') }}"></script>
+	<link href="{{ URL::asset('public/css/common.css') }}" rel="stylesheet">
+	<!--[if lt IE 9]>
+	<script src="{{ URL::asset('public/admin/js/html5shiv.js') }}"></script>
+	<script src="{{ URL::asset('public/admin/js/respond.min.js') }}"></script>
+	<![endif]-->
+	<!-- CKEditor & CKFinder : soan thao van ban -->
+    <script src="{{ url('public/admin/js/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{ url('public/admin/js/ckfinder/ckfinder.js')}}"></script>
+    <script type="text/javascript">
+        var baseURL = "{!! url('/') !!}";
+    </script>
+    <script src="{{ url('public/admin/js/func_ckfinder.js')}}"></script>
+    <!-- END CKEditor & CKFinder -->
 
 </head>
 
@@ -31,7 +36,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><span>DC</span> Shop</a>
+				<a class="navbar-brand" href="{{ url('/') }}"><span>DC</span> Shop</a>
 				<ul class="user-menu">
 					<li class="dropdown pull-right">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> User <span class="caret"></span></a>
@@ -58,9 +63,9 @@
 		<ul class="nav menu">
 			<li id="homeMenu"><a href="{{ url('/admin/home') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> Home</a></li>
 			<li id="cateMenu"><a href="{{ url('/admin/cate/list') }}"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg>Category</a></li>
-			<li id="productMenu"><a href="{{ url('/admin/product/list') }}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-table"></use></svg>Product</a></li>
+			<li id="productMenu"><a href="{{ url('/admin/product/list') }}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>Product</a></li>
 			<!--<li><a href="{{ url('/admin/prduct/list') }}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>Product Image</a></li>-->
-			<li id="userMenu"><a href="{{ url('/admin/user/list') }}"><svg class="glyph stroked pencil"><use xlink:href="#stroked-male-user"></use></svg>User</a></li>
+			<li id="userMenu"><a href="{{ url('/admin/user/list') }}"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>User</a></li>
 
 		</ul>
 

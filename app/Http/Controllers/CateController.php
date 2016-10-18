@@ -26,7 +26,7 @@ class CateController extends Controller
 
 		$cate->name = $request->txtCateName;
 		$cate->alias = convert_vi_to_en($request->txtCateName);
-		$cate->order = $request->txtOrder;
+		$cate->order = $request->txtOrder ? $request->txtOrder : 0;
 		$cate->parent_id = $request->sltParent;
 		$cate->keywords = $request->txtKeywords;
 		$cate->description = $request->txtDescription;

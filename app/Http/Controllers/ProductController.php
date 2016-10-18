@@ -21,7 +21,8 @@ class ProductController extends Controller
 
 	public function postAdd(ProductRequest $request)
 	{
-		$fileName = $request->file('fImages')->getClientOriginalName();
+		$path_parts = pathinfo($request->file('fImages')->getClientOriginalName());
+		$fileName = md5($request->txtName).".".$path_parts['extension'];//$request->file('fImages')->getClientOriginalName();
 		$product = new Product();
 		$product->name = $request->txtName;
 		$product->alias = convert_vi_to_en($request->txtName);
@@ -33,17 +34,22 @@ class ProductController extends Controller
 		$product->description = $request->txtDescription;
 		$product->user_id = Auth::user()->id;
 		$product->cate_id = $request->sltParent;
+		$product->status = $request->rdoStatus;
 		$request->file('fImages')->move('resources/upload/', $fileName);
 		$product->save();
 
 		$product_id = $product->id;
 		if ($request->hasFile('fProductDetail')) {
-			foreach ($request->file('fProductDetail') as $file) {
+			foreach ($request->file('fProductDetail') as $key => $file) {
 				$product_img = new ProductImage();
 				if (isset($file)) {
-					$product_img->image = $file->getClientOriginalName();
+					$detail_path_parts = pathinfo($file->getClientOriginalName());
+					$date = date('ymddhmsa');
+					$img_detail_name = md5($request->txtName).$date.$key.".".$detail_path_parts['extension'];
+					$product_img->image = $img_detail_name;//$file->getClientOriginalName();
 					$product_img->product_id = $product_id;
-					$file->move('resources/upload/detail/', $file->getClientOriginalName());
+					$product_img->status = $request->rdoStatus;
+					$file->move('resources/upload/detail/', $img_detail_name);
 					$product_img->save();
 				}
 			}
@@ -107,25 +113,33 @@ class ProductController extends Controller
 		$product->description = $request->txtDescription;
 		$product->user_id = Auth::user()->id;
 		$product->cate_id = $request->sltParent;
+		$product->status = $request->rdoStatus;
 		//$request->file('fImages')->move('resources/upload/',$fileName);
 		$img_current = 'resources/upload/' . $request->img_current;
 		//if(!empty(Request::file('fImages')))
 		if (!empty($request->fImages)) {
-			$filename = $request->fImages->getClientOriginalName();
-			$product->image = $filename;
-			$request->fImages->move('resources/upload/', $filename);
+			//xoa file cu di
 			if (File::exists($img_current)) {
 				File::delete($img_current);
 			}
+			//them file moi
+			$path_parts = pathinfo($request->file('fImages')->getClientOriginalName());
+			$filename = md5($request->txtName).".".$path_parts['extension'];//$request->fImages->getClientOriginalName();
+			$product->image = $filename;
+			$request->fImages->move('resources/upload/', $filename);
 		}
 		$product->save();
 		if (!empty($request->fProductDetail)) {
-			foreach ($request->fProductDetail as $file) {
+			foreach ($request->fProductDetail as $key => $file) {
 				if (isset($file)) {
 					$productImage = new ProductImage();
-					$productImage->image = $file->getClientOriginalName();
+					$detail_path_parts = pathinfo($file->getClientOriginalName());
+					$date = date('ymddhmsa');
+					$img_detail_name = md5($request->txtName).$date.$key.".".$detail_path_parts['extension'];
+					$productImage->image = $img_detail_name;//$file->getClientOriginalName();
 					$productImage->product_id = $id;
-					$file->move('resources/upload/detail', $file->getClientOriginalName());
+					$productImage->status = $request->rdoStatus;
+					$file->move('resources/upload/detail', $img_detail_name);
 					$productImage->save();
 				}
 			}

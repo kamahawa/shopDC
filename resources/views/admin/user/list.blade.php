@@ -1,8 +1,15 @@
-@extends('...layouts.master')
+@extends('admin.layouts.master')
 @section('controller', 'User')
-@section('action', 'List')
+@section('icons')
+<li><a href="{{ url('/admin/user/list') }}"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg></a></li>
+@endsection
 
 @section('content')
+<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="form-group margin-top-15">
+	<a href="{{ url('/admin/user/add') }}" class="btn btn-default btn-custom-width-100">Add</a>
+	</div>
+</div>
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
     <thead>
         <tr align="center">

@@ -1,6 +1,8 @@
-@extends('...layouts.master')
+@extends('admin.layouts.master')
 @section('controller', 'Product')
-@section('action', 'Edit')
+@section('icons')
+<li><a href="{{ url('/admin/product/list') }}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg></a></li>
+@endsection
 
 @section('content')
 <style>
@@ -56,17 +58,15 @@
                   <label>Product Description</label>
                   <textarea class="form-control" name="txtDescription" rows="3">{!! old('txtDescription', isset($product)? $product['description'] : null ) !!}</textarea>
                 </div>
-                <!--
                 <div class="form-group">
                   <label>Product Status</label>
                   <label class="radio-inline">
-                      <input name="rdoStatus" value="1" checked="" type="radio">Visible
+                      <input name="rdoStatus" value="1" {!! old('rdoStatus', isset($product) ? ($product['status'] == 1 ? "checked" : "") : "checked" ) !!} type="radio">Visible
                   </label>
                   <label class="radio-inline">
-                      <input name="rdoStatus" value="2" type="radio">Invisible
+                      <input name="rdoStatus" value="2" {!! old('rdoStatus', isset($product) ? ($product['status'] == 2 ? "checked" : "") : "" ) !!} type="radio">Invisible
                   </label>
                 </div>
-                -->
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-4">

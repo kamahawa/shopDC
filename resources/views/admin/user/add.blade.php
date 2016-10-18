@@ -1,7 +1,8 @@
-@extends('...layouts.master')
+@extends('admin.layouts.master')
 @section('controller', 'User')
-@section('action', 'Add')
-
+@section('icons')
+<li><a href="{{ url('/admin/user/list') }}"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg></a></li>
+@endsection
 @section('content')
 <div class="col-lg-7" style="padding-bottom:120px">
     @include('admin.blocks.error')
@@ -33,6 +34,15 @@
             </label>
             <label class="radio-inline">
                 <input name="rdoLevel" value="3" type="radio">Member
+            </label>
+        </div>
+        <div class="form-group">
+            <label>Category Status</label>
+            <label class="radio-inline">
+                <input name="rdoStatus" value="1" checked="" type="radio">Active
+            </label>
+            <label class="radio-inline">
+                <input name="rdoStatus" value="0" type="radio">Deactive
             </label>
         </div>
         <button type="submit" class="btn btn-default">User Add</button>

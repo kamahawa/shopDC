@@ -1,11 +1,10 @@
 @extends('admin.layouts.master')
 @section('controller', 'Category')
-@section('action', 'Edit')
 @section('icons')
 <li><a href="{{ url('/admin/cate/list') }}"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg></a></li>
 @endsection
 @section('content')
-<!--
+
 <div class="col-lg-7" style="padding-bottom:120px">
     @include('admin.blocks.error')
     <form action="" method="POST">
@@ -27,7 +26,7 @@
         </div>
         <div class="form-group">
             <label>Category Keywords</label>
-            <input class="form-control" name="txtKeyword" placeholder="Please Enter Category Keywords" value="{!! old('txtKeyword', isset($data) ? $data['keywords'] : null) !!}" />
+            <input class="form-control" name="txtKeywords" placeholder="Please Enter Category Keywords" value="{!! old('txtKeyword', isset($data) ? $data['keywords'] : null) !!}" />
         </div>
         <div class="form-group">
             <label>Category Description</label>
@@ -39,6 +38,4 @@
         <button type="reset" class="btn btn-default">Reset</button>
     </form>
 </div>
-
-        -->
 @endsection

@@ -30,6 +30,7 @@ class UserController extends Controller
 		$user->password = Hash::make($request->txtPass);
 		$user->email = $request->txtEmail;
 		$user->level = $request->rdoLevel;
+		$user->status = $request->rdoStatus;
 		$user->remember_token = $request->_token;
 		$user->save();
 		return redirect()->route('admin.user.list')->with(['flash_level' => 'success', 'flash_message' => 'Success!! Complete add user']);
@@ -76,6 +77,7 @@ class UserController extends Controller
 		}
 		$user->email = $request->txtEmail;
 		$user->level = $request->rdoLevel;
+		$user->status = $request->rdoStatus;
 		$user->remember_token = $request->_token;
 		$user->save();
 		return redirect()->route('admin.user.list')->with(['flash_level' => 'success', 'flash_message' => 'Success!! Complete edit user']);
