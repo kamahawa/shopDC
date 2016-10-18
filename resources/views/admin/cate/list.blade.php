@@ -1,7 +1,14 @@
 @extends('admin.layouts.master')
 @section('controller', 'Category')
-@section('action', 'List')
+@section('icons')
+<li><a href="{{ url('/admin/cate/list') }}"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg></a></li>
+@endsection
 @section('content')
+<div class="col-md-12 col-sm-12 col-xs-12">
+	<div class="form-group margin-top-15">
+	<a href="{{ url('/admin/cate/add') }}" class="btn btn-default btn-custom-width-100">Add</a>
+	</div>
+</div>
 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
     <thead>
         <tr align="center">

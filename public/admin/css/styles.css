@@ -110,7 +110,7 @@ button:active {
 	box-shadow: inset 0px 0px 500px rgba(0,0,0,.1);
 	opacity: 1;
 }
-
+/*
 .btn-default,
 .btn-default:hover,
 .btn-default:focus,
@@ -135,7 +135,7 @@ fieldset[disabled] .btn-default.active {
 	background-color: #e9ecf2;
 	border-color: #e9ecf2;
 	color: #1b3548;
-}
+}*/
 
 .btn-primary,
 .btn-primary:hover,
@@ -570,7 +570,7 @@ a.bg-danger:hover {
 .sidebar ul.nav .active > a:focus, .sidebar ul.nav li.parent a.active:focus {
 	color: #fff;
 	background-color: #30a5ff;
-}*/
+}
 
 .sidebar ul.nav ul,
 .sidebar ul.nav ul li {

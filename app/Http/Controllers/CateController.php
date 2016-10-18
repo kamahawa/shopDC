@@ -30,6 +30,7 @@ class CateController extends Controller
 		$cate->parent_id = $request->sltParent;
 		$cate->keywords = $request->txtKeywords;
 		$cate->description = $request->txtDescription;
+		$cate->status = $request->rdoStatus;
 		$cate->Save();
 		return redirect()->route('admin.cate.list')->with(['flash_level' => 'success', 'flash_message' => 'Success!! Complete add category']);
 	}

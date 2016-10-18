@@ -1,11 +1,12 @@
-@extends('...layouts.master')
+@extends('admin.layouts.master')
 @section('controller', 'Category')
-@section('action', 'Add')
-
+@section('icons')
+<li><a href="{{ url('/admin/cate/list') }}"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg></a></li>
+@endsection
 @section('content')
 <div class="col-lg-7" style="padding-bottom:120px">
     @include('admin.blocks.error')
-    <form action="{!! route('admin.cate.getAdd') !!}" method="POST">
+    <form action="{!! route('admin.cate.postAdd') !!}" method="POST">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}">
         <div class="form-group">
             <label>Category Parent</label>
@@ -16,8 +17,7 @@
         </div>
         <div class="form-group">
             <label>Category Name</label>
-            <input class="form-control" name="txtCateName" placeholder="Please Enter Category Name" value="{!! old('txtName') !!}" />
-
+            <input class="form-control" name="txtCateName" required="" placeholder="Please Enter Category Name" value="{!! old('txtName') !!}" />
         </div>
         <div class="form-group">
             <label>Category Order</label>
@@ -31,17 +31,15 @@
             <label>Category Description</label>
             <textarea class="form-control" rows="3" name="txtDescription">{!! old('txtDescription') !!}</textarea>
         </div>
-        <!--
         <div class="form-group">
             <label>Category Status</label>
             <label class="radio-inline">
                 <input name="rdoStatus" value="1" checked="" type="radio">Visible
             </label>
             <label class="radio-inline">
-                <input name="rdoStatus" value="2" type="radio">Invisible
+                <input name="rdoStatus" value="0" type="radio">Invisible
             </label>
         </div>
-        -->
         <button type="submit" class="btn btn-default">Category Add</button>
         <button type="reset" class="btn btn-default">Reset</button>
     </form>

@@ -1,8 +1,11 @@
-@extends('...layouts.master')
+@extends('admin.layouts.master')
 @section('controller', 'Category')
 @section('action', 'Edit')
-
+@section('icons')
+<li><a href="{{ url('/admin/cate/list') }}"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg></a></li>
+@endsection
 @section('content')
+<!--
 <div class="col-lg-7" style="padding-bottom:120px">
     @include('admin.blocks.error')
     <form action="" method="POST">
@@ -30,19 +33,12 @@
             <label>Category Description</label>
             <textarea class="form-control" name="txtDescription" rows="3">{!! old('txtDescription', isset($data) ? $data['description'] : null) !!}</textarea>
         </div>
-        <!--
-        <div class="form-group">
-            <label>Category Status</label>
-            <label class="radio-inline">
-                <input name="rdoStatus" value="1" checked="" type="radio">Visible
-            </label>
-            <label class="radio-inline">
-                <input name="rdoStatus" value="2" type="radio">Invisible
-            </label>
-        </div>
-        -->
+
+
         <button type="submit" class="btn btn-default">Category Edit</button>
         <button type="reset" class="btn btn-default">Reset</button>
     </form>
 </div>
+
+        -->
 @endsection

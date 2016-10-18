@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Admin @yield('title')</title>
-
+<!-- theme -->
 <link href="{{ URL::asset('public/admin/css/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('public/admin/css/datepicker3.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('public/admin/css/styles.css') }}" rel="stylesheet">
@@ -12,14 +12,12 @@
 <!--Icons-->
 <script src="{{ URL::asset('public/admin/js/lumino.glyphs.js') }}"></script>
 
+<link href="{{ URL::asset('public/css/common.css') }}" rel="stylesheet">
+
 <!--[if lt IE 9]>
 <script src="{{ URL::asset('public/admin/js/html5shiv.js') }}"></script>
 <script src="{{ URL::asset('public/admin/js/respond.min.js') }}"></script>
 <![endif]-->
-
-
-<script src="{{ URL::asset('public/admin/js/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ URL::asset('public/admin/js/myscript.js') }}"></script>
 
 </head>
 
@@ -58,39 +56,12 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li class="active"><a href="{{ url('/admin/home') }}"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-home"></use></svg> Home</a></li>
-			<li><a href="{{ url('/admin/cate/list') }}"><svg class="glyph stroked calendar"><use xlink:href="#stroked-clipboard-with-paper"></use></svg>Category</a></li>
-			<li><a href="{{ url('/admin/product/list') }}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-table"></use></svg>Product</a></li>
+			<li id="homeMenu"><a href="{{ url('/admin/home') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> Home</a></li>
+			<li id="cateMenu"><a href="{{ url('/admin/cate/list') }}"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg>Category</a></li>
+			<li id="productMenu"><a href="{{ url('/admin/product/list') }}"><svg class="glyph stroked line-graph"><use xlink:href="#stroked-table"></use></svg>Product</a></li>
 			<!--<li><a href="{{ url('/admin/prduct/list') }}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>Product Image</a></li>-->
-			<li><a href="{{ url('/admin/user/list') }}"><svg class="glyph stroked pencil"><use xlink:href="#stroked-male-user"></use></svg>User</a></li>
-			<!--
-			<li><a href="../panels.html"><svg class="glyph stroked app-window"><use xlink:href="#stroked-app-window"></use></svg> Alerts &amp; Panels</a></li>
-			<li><a href="../icons.html"><svg class="glyph stroked star"><use xlink:href="#stroked-star"></use></svg> Icons</a></li>
-			<li class="parent ">
-				<a href="#">
-					<span data-toggle="collapse" href="#sub-item-1"><svg class="glyph stroked chevron-down"><use xlink:href="#stroked-chevron-down"></use></svg></span> Dropdown 
-				</a>
-				<ul class="children collapse" id="sub-item-1">
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 1
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 2
-						</a>
-					</li>
-					<li>
-						<a class="" href="#">
-							<svg class="glyph stroked chevron-right"><use xlink:href="#stroked-chevron-right"></use></svg> Sub Item 3
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li role="presentation" class="divider"></li>
-			<li><a href="../login.html"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Login Page</a></li>
-			-->
+			<li id="userMenu"><a href="{{ url('/admin/user/list') }}"><svg class="glyph stroked pencil"><use xlink:href="#stroked-male-user"></use></svg>User</a></li>
+
 		</ul>
 
 	</div><!--/.sidebar-->
@@ -100,269 +71,12 @@
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="{{ url('/admin/home') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
-				<li class="active">Icons</li>
+				@yield("icons")
 			</ol>
 		</div>
 
 		@yield('content')
 
-		<!--
-
-		<div class="row">
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-blue panel-widget ">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">120</div>
-							<div class="text-muted">New Orders</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-orange panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">52</div>
-							<div class="text-muted">Comments</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-teal panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">24</div>
-							<div class="text-muted">New Users</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-red panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">25.2k</div>
-							<div class="text-muted">Page Views</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">Site Traffic Overview</div>
-					<div class="panel-body">
-						<div class="canvas-wrapper">
-							<canvas class="main-chart" id="line-chart" height="200" width="600"></canvas>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>New Orders</h4>
-						<div class="easypiechart" id="easypiechart-blue" data-percent="92" ><span class="percent">92%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Comments</h4>
-						<div class="easypiechart" id="easypiechart-orange" data-percent="65" ><span class="percent">65%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>New Users</h4>
-						<div class="easypiechart" id="easypiechart-teal" data-percent="56" ><span class="percent">56%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3">
-				<div class="panel panel-default">
-					<div class="panel-body easypiechart-panel">
-						<h4>Visitors</h4>
-						<div class="easypiechart" id="easypiechart-red" data-percent="27" ><span class="percent">27%</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-								
-		<div class="row">
-			<div class="col-md-8">
-			
-				<div class="panel panel-default chat">
-					<div class="panel-heading" id="accordion"><svg class="glyph stroked two-messages"><use xlink:href="#stroked-two-messages"></use></svg> Chat</div>
-					<div class="panel-body">
-						<ul>
-							<li class="left clearfix">
-								<span class="chat-img pull-left">
-									<img src="http://placehold.it/80/30a5ff/fff" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. 
-									</p>
-								</div>
-							</li>
-							<li class="right clearfix">
-								<span class="chat-img pull-right">
-									<img src="http://placehold.it/80/dde0e6/5f6468" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="pull-left primary-font">Jane Doe</strong> <small class="text-muted">6 mins ago</small>
-									</div>
-									<p>
-										Mauris dignissim porta enim, sed commodo sem blandit non. Ut scelerisque sapien eu mauris faucibus ultrices. Nulla ac odio nisl. Proin est metus, interdum scelerisque quam eu, eleifend pretium nunc. Suspendisse finibus auctor lectus, eu interdum sapien.
-									</p>
-								</div>
-							</li>
-							<li class="left clearfix">
-								<span class="chat-img pull-left">
-									<img src="http://placehold.it/80/30a5ff/fff" alt="User Avatar" class="img-circle" />
-								</span>
-								<div class="chat-body clearfix">
-									<div class="header">
-										<strong class="primary-font">John Doe</strong> <small class="text-muted">32 mins ago</small>
-									</div>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ante turpis, rutrum ut ullamcorper sed, dapibus ac nunc. Vivamus luctus convallis mauris, eu gravida tortor aliquam ultricies. 
-									</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-					
-					<div class="panel-footer">
-						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-md" placeholder="Type your message here..." />
-							<span class="input-group-btn">
-								<button class="btn btn-success btn-md" id="btn-chat">Send</button>
-							</span>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			
-			<div class="col-md-4">
-			
-				<div class="panel panel-blue">
-					<div class="panel-heading dark-overlay"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg>To-do List</div>
-					<div class="panel-body">
-						<ul class="todo-list">
-						<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox" />
-									<label for="checkbox">Make a plan for today</label>
-								</div>
-								<div class="pull-right action-buttons">
-									<a href="#"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg></a>
-									<a href="#" class="flag"><svg class="glyph stroked flag"><use xlink:href="#stroked-flag"></use></svg></a>
-									<a href="#" class="trash"><svg class="glyph stroked trash"><use xlink:href="#stroked-trash"></use></svg></a>
-								</div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox" />
-									<label for="checkbox">Update Basecamp</label>
-								</div>
-								<div class="pull-right action-buttons">
-									<a href="#"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg></a>
-									<a href="#" class="flag"><svg class="glyph stroked flag"><use xlink:href="#stroked-flag"></use></svg></a>
-									<a href="#" class="trash"><svg class="glyph stroked trash"><use xlink:href="#stroked-trash"></use></svg></a>
-								</div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox" />
-									<label for="checkbox">Send email to Jane</label>
-								</div>
-								<div class="pull-right action-buttons">
-									<a href="#"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg></a>
-									<a href="#" class="flag"><svg class="glyph stroked flag"><use xlink:href="#stroked-flag"></use></svg></a>
-									<a href="#" class="trash"><svg class="glyph stroked trash"><use xlink:href="#stroked-trash"></use></svg></a>
-								</div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox" />
-									<label for="checkbox">Drink coffee</label>
-								</div>
-								<div class="pull-right action-buttons">
-									<a href="#"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg></a>
-									<a href="#" class="flag"><svg class="glyph stroked flag"><use xlink:href="#stroked-flag"></use></svg></a>
-									<a href="#" class="trash"><svg class="glyph stroked trash"><use xlink:href="#stroked-trash"></use></svg></a>
-								</div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox" />
-									<label for="checkbox">Do some work</label>
-								</div>
-								<div class="pull-right action-buttons">
-									<a href="#"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg></a>
-									<a href="#" class="flag"><svg class="glyph stroked flag"><use xlink:href="#stroked-flag"></use></svg></a>
-									<a href="#" class="trash"><svg class="glyph stroked trash"><use xlink:href="#stroked-trash"></use></svg></a>
-								</div>
-							</li>
-							<li class="todo-list-item">
-								<div class="checkbox">
-									<input type="checkbox" id="checkbox" />
-									<label for="checkbox">Tidy up workspace</label>
-								</div>
-								<div class="pull-right action-buttons">
-									<a href="#"><svg class="glyph stroked pencil"><use xlink:href="#stroked-pencil"></use></svg></a>
-									<a href="#" class="flag"><svg class="glyph stroked flag"><use xlink:href="#stroked-flag"></use></svg></a>
-									<a href="#" class="trash"><svg class="glyph stroked trash"><use xlink:href="#stroked-trash"></use></svg></a>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="panel-footer">
-						<div class="input-group">
-							<input id="btn-input" type="text" class="form-control input-md" placeholder="Add new task" />
-							<span class="input-group-btn">
-								<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
-							</span>
-						</div>
-					</div>
-				</div>
-								
-			</div>
-		</div>
-		-->
 	</div>	<!--/.main-->
 
 	<script src="{{ URL::asset('public/admin/js/jquery-1.11.1.min.js') }}"></script>
@@ -372,6 +86,7 @@
 	<script src="{{ URL::asset('public/admin/js/easypiechart.js') }}"></script>
 	<script src="{{ URL::asset('public/admin/js/easypiechart-data.js') }}"></script>
 	<script src="{{ URL::asset('public/admin/js/bootstrap-datepicker.js') }}"></script>
+	<script src="{{ URL::asset('public/admin/js/myscript.js') }}"></script>
 	<script>
 		$('#calendar').datepicker({
 		});
@@ -389,7 +104,28 @@
 		$(window).on('resize', function () {
 		  if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 		})
-	</script>	
+	</script>
+	<script>
+		$(function() {
+			var url = window.location.href;
+			if(url.indexOf('home') >= 0)
+			{
+				$("#homeMenu").addClass("active");
+			}
+			else if(url.indexOf('cate') >= 0)
+			{
+				$("#cateMenu").addClass("active");
+			}
+			else if(url.indexOf('product') >= 0)
+			{
+				$("#productMenu").addClass("active");
+			}
+			else if(url.indexOf('user') >= 0)
+			{
+				$("#userMenu").addClass("active");
+			}
+		});
+    </script>
 </body>
 
 </html>
