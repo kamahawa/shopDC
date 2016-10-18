@@ -20,11 +20,20 @@ class WelcomeController extends Controller
 	{
 		//$product_cate = DB::table('products')->select('id','name','image','price','alias','cate_id')->where('cate_id',$id)->get();
 		$product_cate = DB::table('products')->select('id', 'name', 'image', 'price', 'alias', 'cate_id')->where('cate_id', $id)->paginate(1);
-		print_r($product_cate);die();
-		$cate = DB::table('cates')->select('parent_id')->where('id', $product_cate[0]->cate_id)->first();
-		$menu_cate = DB::table('cates')->select('id', 'name', 'alias')->where('parent_id', $cate->parent_id)->get();
-		$name_cate = DB::table('cates')->select('name')->where('id', $id)->first();
-		$lated_product = DB::table('products')->select('id', 'name', 'image', 'price', 'alias', 'cate_id')->orderBy('id', 'DESC')->take(3)->get();
+		if(count($product_cate) == 0)
+		{
+			$cate = DB::table('cates')->select('parent_id')->where('id', $id)->first();
+			$menu_cate = DB::table('cates')->select('id', 'name', 'alias')->where('parent_id', $cate->parent_id)->get();
+			$name_cate = DB::table('cates')->select('name')->where('id', $id)->first();
+			$lated_product = DB::table('products')->select('id', 'name', 'image', 'price', 'alias', 'cate_id')->orderBy('id', 'DESC')->take(3)->get();
+		}
+		else
+		{
+			$cate = DB::table('cates')->select('parent_id')->where('id', $product_cate[0]->cate_id)->first();
+			$menu_cate = DB::table('cates')->select('id', 'name', 'alias')->where('parent_id', $cate->parent_id)->get();
+			$name_cate = DB::table('cates')->select('name')->where('id', $id)->first();
+			$lated_product = DB::table('products')->select('id', 'name', 'image', 'price', 'alias', 'cate_id')->orderBy('id', 'DESC')->take(3)->get();
+		}
 		return view('user.pages.cate', compact('product_cate', 'menu_cate', 'lated_product', 'name_cate'));
 	}
 

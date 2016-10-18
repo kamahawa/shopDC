@@ -5,7 +5,7 @@
 @section('content')
   <section id="product">
     <div class="container">
-     <!--  breadcrumb -->  
+     <!--  breadcrumb -->
       <ul class="breadcrumb">
         <li>
           <a href="#">Home</a>
@@ -13,10 +13,10 @@
         </li>
         <li class="active">Category</li>
       </ul>
-      <div class="row">        
+      <div class="row">
         <!-- Sidebar Start-->
         <aside class="span3">
-         <!-- Category-->  
+         <!-- Category-->
           <div class="sidewidt">
             <h2 class="heading2"><span>Categories</span></h2>
             <ul class="nav nav-list categories">
@@ -27,7 +27,8 @@
               @endforeach
             </ul>
           </div>
-         <!--  Best Seller -->  
+         <!--  Best Seller -->
+         <!--
           <div class="sidewidt">
             <h2 class="heading2"><span>Best Seller</span></h2>
             <ul class="bestseller">
@@ -51,7 +52,8 @@
               </li>
             </ul>
           </div>
-          <!-- Latest Product -->  
+          -->
+          <!-- Latest Product -->
           <div class="sidewidt">
             <h2 class="heading2"><span>Latest Products</span></h2>
             <ul class="bestseller">
@@ -65,24 +67,26 @@
             @endforeach
             </ul>
           </div>
-          <!--  Must have -->  
+          <!--  Must have -->
+          <!--
           <div class="sidewidt">
-          <h2 class="heading2"><span>Must have</span></h2>
-          <div class="flexslider" id="mainslider">
-            <ul class="slides">
-              <li>
-                <img src="img/product1.jpg" alt="" />
-              </li>
-              <li>
-                <img src="img/product2.jpg" alt="" />
-              </li>
-            </ul>
+          	<h2 class="heading2"><span>Must have</span></h2>
+			  <div class="flexslider" id="mainslider">
+				<ul class="slides">
+				  <li>
+					<img src="img/product1.jpg" alt="" />
+				  </li>
+				  <li>
+					<img src="img/product2.jpg" alt="" />
+				  </li>
+				</ul>
+			  </div>
           </div>
-          </div>
+          -->
         </aside>
         <!-- Sidebar End-->
         <!-- Category-->
-        <div class="span9">          
+        <div class="span9">
           <!-- Category Products-->
           <section id="category">
             <div class="row">
