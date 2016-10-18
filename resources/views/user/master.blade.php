@@ -59,12 +59,12 @@
                     <li class="mobile"> Huy Cường : 0977 538 528</li>
                     <li class="mobile"> Bích Diệp : 0169 996 60 840</li>
                     <li class="email"> kamahawa@gmail.com</li>
-                    <li class="email"> test@test.com</li>
                     </ul>
                 </div>
                 <div class="span3 twitter">
-                <h2>Twitter </h2>
-                <div id="twitter">
+                <h2>FACEBOOK </h2>
+                <div id="facebook">
+                facebook.com/shopDC
                 </div>
                 </div>
             </div>
