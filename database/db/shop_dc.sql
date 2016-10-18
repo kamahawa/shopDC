@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 20, 2016 at 11:49 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Generation Time: Oct 18, 2016 at 07:04 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,10 +14,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `laravel_pratice`
+-- Database: `shop_dc`
 --
 
 -- --------------------------------------------------------
@@ -26,33 +26,29 @@ SET time_zone = "+00:00";
 -- Table structure for table `cates`
 --
 
-CREATE TABLE IF NOT EXISTS `cates` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `cates` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `alias` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `order` int(11) NOT NULL,
   `parent_id` int(11) NOT NULL,
   `keywords` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `cates_name_unique` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `cates`
 --
 
-INSERT INTO `cates` (`id`, `name`, `alias`, `order`, `parent_id`, `keywords`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'Quần Jean', 'Quần Jean', 2, 0, 'Quần jean online', 'Quần jean đẹp online', '2016-08-19 00:46:43', '2016-08-19 09:57:48'),
-(2, 'Áo thun', 'Áo thun', 3, 0, 'Áo thun Lacoste', 'Áo thun Lacoste chính hãng', '2016-08-19 00:52:59', '2016-08-19 09:58:08'),
-(4, 'Quần Jean Da Bò Đẹp', 'quan-jean-da-bo-dep', 6, 1, '', 'Quần Jean Da Bò Đẹp', '2016-08-19 01:44:50', '2016-08-24 19:40:39'),
-(6, 'Áo thun nữ', 'ao-thun-nu', 2, 2, 'Áo thun nữ', 'Áo thun nữ', '2016-08-19 03:10:38', '2016-08-19 03:10:38'),
-(7, 'Quần jean nữ', 'Quần jean nữ', 0, 1, 'Quần jean nữ', 'Quần jean nữ', '2016-09-01 04:33:18', '2016-09-01 04:33:18'),
-(8, 'Quần jean nam', 'Quần jean nam', 0, 1, 'Quần jean nam', 'Quần jean nam', '2016-09-01 04:33:18', '2016-09-01 04:33:18'),
-(9, 'Áo thun nam', 'Áo thun nam', 0, 2, 'Áo thun nam', 'Áo thun nam', '2016-09-01 04:34:02', '2016-09-01 04:34:02'),
-(10, 'Áo thun ôm', 'Áo thun ôm', 0, 2, 'Áo thun ôm', 'Áo thun ôm', '2016-09-01 04:34:02', '2016-09-01 04:34:02');
+INSERT INTO `cates` (`id`, `name`, `alias`, `order`, `parent_id`, `keywords`, `description`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Mỹ Phẩm', 'my-pham', 0, 0, 'Mỹ phẩm online', 'Mỹ phẩm online', 1, '2016-10-17 18:54:13', '2016-10-17 18:54:13'),
+(2, 'Quần áo', 'quan-ao', 0, 0, 'Quần áo online', 'Quần áo online', 1, '2016-10-17 18:54:49', '2016-10-18 01:57:14'),
+(3, 'Kem', 'kem', 1, 1, 'Kem trắng da, kem trị mụn, kem trị nám, kem dưỡng da', 'Kem trắng da, Kem trị mụn, kem trị nám, kem dưỡng da', 1, '2016-10-17 18:58:26', '2016-10-17 18:58:26'),
+(5, 'Đồ bay', 'do-bay', 1, 2, 'Đồ bay', 'Đồ bay', 1, '2016-10-17 19:02:28', '2016-10-17 19:02:28'),
+(6, 'Đầm', 'dam', 1, 2, 'Đầm online', 'Đầm online', 1, '2016-10-17 19:03:03', '2016-10-17 19:03:03');
 
 -- --------------------------------------------------------
 
@@ -60,7 +56,7 @@ INSERT INTO `cates` (`id`, `name`, `alias`, `order`, `parent_id`, `keywords`, `d
 -- Table structure for table `migrations`
 --
 
-CREATE TABLE IF NOT EXISTS `migrations` (
+CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -82,12 +78,10 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 -- Table structure for table `password_resets`
 --
 
-CREATE TABLE IF NOT EXISTS `password_resets` (
+CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`),
-  KEY `password_resets_token_index` (`token`)
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -96,8 +90,8 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- Table structure for table `products`
 --
 
-CREATE TABLE IF NOT EXISTS `products` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `alias` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `price` int(11) NOT NULL,
@@ -106,26 +100,21 @@ CREATE TABLE IF NOT EXISTS `products` (
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `keywords` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
-  `cate_id` int(10) unsigned NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `cate_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `products_name_unique` (`name`),
-  KEY `products_user_id_foreign` (`user_id`),
-  KEY `products_cate_id_foreign` (`cate_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `alias`, `price`, `intro`, `content`, `image`, `keywords`, `description`, `user_id`, `cate_id`, `created_at`, `updated_at`) VALUES
-(6, 'Áo thun nữ Vietnam', 'ao-thun-nu-vietnam', 1000000, '<p>&Aacute;o thun nữ Vietnam</p>\r\n', '<p>&Aacute;o thun nữ Vietnam</p>\r\n', '07025-10.jpg', 'Áo thun nữ Vietnam', 'Áo thun nữ Vietnam', 2, 6, '2016-08-24 20:32:38', '2016-08-31 23:29:14'),
-(15, 'quần jean ck 1', 'quan-jean-ck-1', 3000000, '<p>quần jean ck 1</p>\r\n', '<p>quần jean ck 1</p>\r\n', '07018-1.jpg', 'quần jean ck 1', 'quần jean ck 1', 1, 4, '2016-08-24 21:52:46', '2016-08-28 20:18:32'),
-(16, 'Quần jean nam', 'quan-jean-nam', 2000000, '<p>Quần jean nam</p>\r\n', '<p>Quần jean nam</p>\r\n', '07020-3.jpg', 'Quần jean nam', 'Quần jean nam', 2, 1, '2016-09-05 21:21:55', '2016-09-05 21:21:55'),
-(17, 'Quần jean da bò nam ', 'quan-jean-da-bo-nam-', 2000000, '<p>Quần jean da b&ograve; nam&nbsp;</p>\r\n', '<p>Quần jean da b&ograve; nam&nbsp;</p>\r\n', '07019-9.jpg', 'Quần jean da bò nam ', 'Quần jean da bò nam ', 2, 4, '2016-09-05 21:24:10', '2016-09-05 21:24:10'),
-(18, 'Quần jean da bò nữ', 'quan-jean-da-bo-nu', 3000000, '<p>Quần jean da b&ograve; nữ</p>\r\n', '<p>Quần jean da b&ograve; nữ</p>\r\n', '07025-8.jpg', 'Quần jean da bò nữ', 'Quần jean da bò nữ', 2, 4, '2016-09-05 21:24:53', '2016-09-05 21:24:53');
+INSERT INTO `products` (`id`, `name`, `alias`, `price`, `intro`, `content`, `image`, `keywords`, `description`, `status`, `user_id`, `cate_id`, `created_at`, `updated_at`) VALUES
+(2, 'Kem trắng da BB', 'kem-trang-da-bb', 3000000, 'Kem trắng da BB', 'Kem trắng da BB\r\nLàm trắng da trong 7 tuần', 'kem-duong-trang-diem-body-cream-bb1(1).png', 'Kem trắng da BB , kem trắng da , kem trắng da online', 'Kem trắng da BB , kem trắng da , kem trắng da online', 1, 2, 3, '2016-10-17 19:51:45', '2016-10-17 19:51:45'),
+(3, 'Đồ bay da beo', 'do-bay-da-beo', 220000, '<p><em><strong><span style="color:#FF0000">Đồ bay da beo</span></strong></em></p>\r\n', '<p>Đồ bay da beo</p>\r\n', 'dobay.jpg', 'Đồ bay da beo', 'Đồ bay da beo', 1, 2, 5, '2016-10-17 19:55:46', '2016-10-17 20:06:17'),
+(8, 'Đầm', 'dam', 2000000, '<p>Đầm</p>\r\n', '<p>Đầm</p>\r\n', '9242b501769f8f2c433d40b523e0e006.jpg', 'Đầm', 'Đầm', 1, 2, 5, '2016-10-17 20:52:49', '2016-10-17 20:52:49');
 
 -- --------------------------------------------------------
 
@@ -133,39 +122,28 @@ INSERT INTO `products` (`id`, `name`, `alias`, `price`, `intro`, `content`, `ima
 -- Table structure for table `product_images`
 --
 
-CREATE TABLE IF NOT EXISTS `product_images` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_images` (
+  `id` int(10) UNSIGNED NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `product_id` int(10) unsigned NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `product_images_product_id_foreign` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=49 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `product_images`
 --
 
-INSERT INTO `product_images` (`id`, `image`, `product_id`, `created_at`, `updated_at`) VALUES
-(30, 'hinh-anh-dep-hoa-hong-tim-day-lang-man-10.jpg', 15, '2016-08-24 21:52:46', '2016-08-24 21:52:46'),
-(32, '07019-10.jpg', 15, '2016-08-28 20:31:57', '2016-08-28 20:31:57'),
-(33, '07019-11.jpg', 16, '2016-09-05 21:21:55', '2016-09-05 21:21:55'),
-(34, '07019-11.jpg', 16, '2016-09-05 21:21:55', '2016-09-05 21:21:55'),
-(35, '07019-10.jpg', 16, '2016-09-05 21:21:55', '2016-09-05 21:21:55'),
-(36, '07020-6.jpg', 16, '2016-09-05 21:21:55', '2016-09-05 21:21:55'),
-(37, '07026-8.jpg', 16, '2016-09-05 21:21:55', '2016-09-05 21:21:55'),
-(38, '07025-5.jpg', 16, '2016-09-05 21:21:55', '2016-09-05 21:21:55'),
-(39, '07019-11.jpg', 17, '2016-09-05 21:24:10', '2016-09-05 21:24:10'),
-(40, '07020-9.jpg', 17, '2016-09-05 21:24:10', '2016-09-05 21:24:10'),
-(41, '07023-3.jpg', 17, '2016-09-05 21:24:10', '2016-09-05 21:24:10'),
-(42, '07023-4.jpg', 17, '2016-09-05 21:24:10', '2016-09-05 21:24:10'),
-(43, '07023-5.jpg', 17, '2016-09-05 21:24:10', '2016-09-05 21:24:10'),
-(44, '07028-7.jpg', 18, '2016-09-05 21:24:53', '2016-09-05 21:24:53'),
-(45, '07028-2.jpg', 18, '2016-09-05 21:24:54', '2016-09-05 21:24:54'),
-(46, '07028-8.jpg', 18, '2016-09-05 21:24:54', '2016-09-05 21:24:54'),
-(47, '07028-10.jpg', 18, '2016-09-05 21:24:54', '2016-09-05 21:24:54'),
-(48, '07028-4.jpg', 18, '2016-09-05 21:24:54', '2016-09-05 21:24:54');
+INSERT INTO `product_images` (`id`, `image`, `status`, `product_id`, `created_at`, `updated_at`) VALUES
+(1, 'kem.jpg', 1, 2, '2016-10-17 19:51:45', '2016-10-17 19:51:45'),
+(2, 'kem1.jpg', 1, 2, '2016-10-17 19:51:45', '2016-10-17 19:51:45'),
+(3, 'dobay1.jpg', 1, 3, '2016-10-17 19:55:46', '2016-10-17 19:55:46'),
+(4, 'dobay2.jpg', 1, 3, '2016-10-17 19:55:46', '2016-10-17 19:55:46'),
+(10, '9242b501769f8f2c433d40b523e0e0060.jpg', 1, 8, '2016-10-17 20:52:49', '2016-10-17 20:52:49'),
+(11, '9242b501769f8f2c433d40b523e0e0062.jpg', 1, 8, '2016-10-17 20:52:49', '2016-10-17 20:52:49'),
+(15, '9242b501769f8f2c433d40b523e0e0061616161610101818041040am0.jpg', 1, 8, '2016-10-17 21:12:40', '2016-10-17 21:12:40'),
+(16, '9242b501769f8f2c433d40b523e0e0061616161610101818041006am0.jpg', 1, 8, '2016-10-17 21:13:06', '2016-10-17 21:13:06');
 
 -- --------------------------------------------------------
 
@@ -173,30 +151,94 @@ INSERT INTO `product_images` (`id`, `image`, `product_id`, `created_at`, `update
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `level` tinyint(4) NOT NULL,
+  `status` tinyint(1) NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `users_username_unique` (`username`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=6 ;
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'mod', '$2y$10$yWi94muGjB0LjE4jIOF9GuggD5O3TizFW/ABHHGTNONE5q/UrrH3S', 'test@gmail.com', 2, 'TAyMUQq0mUMWz2OGXtt7Z9KYWiBkiqYerpli9ZoIll2Wwk7M2hBw4ZOOvpM4', '2016-08-25 02:25:06', '2016-08-31 02:17:38'),
-(2, 'admin', '$2y$10$qrklVRnnK4O3bITehWk04.QH.mvPoIqrB1.uhHPR9/nVpAdtIN2fO', 'admin@gmail.com', 1, 'X7iluhqmI2UP5oEa5a4zFuLQkojnplMAmA0mpBffKxtTNTNO1rmMzDuCulAi', '2016-08-28 21:44:56', '2016-08-31 02:17:57'),
-(3, 'member', '$2y$10$qrklVRnnK4O3bITehWk04.QH.mvPoIqrB1.uhHPR9/nVpAdtIN2fO', 'member@gmail.com', 3, 'oIle2pHC9XxbYcPmlJdvvS7T9irbIDKCObpWrFFAPhKpVo7wr7EheK4lQgLX', '2016-08-28 21:45:37', '2016-08-31 08:26:22'),
-(5, 'mod1', '$2y$10$sGBl3/AhNcGRiuwQm3t3X.brzBIdewFuGS3YMseMVYGmWzZtZwoeS', 'hihi1@gmail.com', 2, '7Ndc3HbD6bcfLnqFxJrX0KRP5hpyCb35vtFX0Zhd', '2016-08-31 01:34:12', '2016-08-31 01:58:31');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `level`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'mod', '$2y$10$yWi94muGjB0LjE4jIOF9GuggD5O3TizFW/ABHHGTNONE5q/UrrH3S', 'test@gmail.com', 2, 1, 'TAyMUQq0mUMWz2OGXtt7Z9KYWiBkiqYerpli9ZoIll2Wwk7M2hBw4ZOOvpM4', '2016-08-24 19:25:06', '2016-08-30 19:17:38'),
+(2, 'admin', '$2y$10$qrklVRnnK4O3bITehWk04.QH.mvPoIqrB1.uhHPR9/nVpAdtIN2fO', 'admin@gmail.com', 1, 1, 'X7iluhqmI2UP5oEa5a4zFuLQkojnplMAmA0mpBffKxtTNTNO1rmMzDuCulAi', '2016-08-28 14:44:56', '2016-08-30 19:17:57'),
+(3, 'member', '$2y$10$qrklVRnnK4O3bITehWk04.QH.mvPoIqrB1.uhHPR9/nVpAdtIN2fO', 'member@gmail.com', 3, 1, 'oIle2pHC9XxbYcPmlJdvvS7T9irbIDKCObpWrFFAPhKpVo7wr7EheK4lQgLX', '2016-08-28 14:45:37', '2016-08-31 01:26:22'),
+(6, 'mod 1', '$2y$10$FRyukgW/JFV45eqS6tudLu1GPZZ29cfg0YrhAaHEWADe15yXWcYXO', 'mod1@gmail.com', 2, 0, 'jdgMtRI35CZwwqPbhHhDOqNyHmIlzNeZxKQZIkNN', '2016-10-17 21:38:59', '2016-10-17 21:44:05');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cates`
+--
+ALTER TABLE `cates`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cates_name_unique` (`name`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`),
+  ADD KEY `password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `products_name_unique` (`name`),
+  ADD KEY `products_user_id_foreign` (`user_id`),
+  ADD KEY `products_cate_id_foreign` (`cate_id`);
+
+--
+-- Indexes for table `product_images`
+--
+ALTER TABLE `product_images`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_images_product_id_foreign` (`product_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_username_unique` (`username`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cates`
+--
+ALTER TABLE `cates`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `product_images`
+--
+ALTER TABLE `product_images`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
