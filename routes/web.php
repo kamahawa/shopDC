@@ -56,6 +56,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'level.mod']], funct
 });
 
 Route::get('loai-san-pham/{id}/{tenloai}', ['as' => 'loaisanpham', 'uses' => 'WelcomeController@loaisanpham']);
+Route::get('loai-san-pham-chinh/{id}/{tenloai}', ['as' => 'loaisanphamchinh', 'uses' => 'WelcomeController@sanphamcap1']);
 Route::get('chi-tiet-san-pham/{id}/{tenloai}', ['as' => 'chitietsanpham', 'uses' => 'WelcomeController@chitietsanpham']);
 
 //send mail

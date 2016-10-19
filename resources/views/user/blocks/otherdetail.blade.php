@@ -1,4 +1,5 @@
 <section class="container otherddetails">
+<!--
     <div class="otherddetailspart">
       <div class="innerclass free">
         <h2>Free shipping</h2>
@@ -19,4 +20,5 @@
         <h2>Over 5000 Choice</h2>
         50,000+ Products </div>
     </div>
+    -->
 </section>

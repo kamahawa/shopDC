@@ -7,3 +7,15 @@
 .margin-top-15{
 	margin-top: 15px;
 }
+.img-category{
+    height: 250px;
+    width: auto;
+    max-width: 300px;
+}
+.img-width-height-50{
+    height: 50px !important;
+    width: 50px !important;
+}
+.thumbnail{
+    text-align: center;
+}

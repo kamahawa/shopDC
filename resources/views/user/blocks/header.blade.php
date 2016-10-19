@@ -2,20 +2,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="span12">
-				<a href="index-2.html" class="logo pull-left"><img src="{{ url('public/user/img/logo.png')}}" alt="SimpleOne" title="SimpleOne"></a>
+				<a href="{{ url('/') }}" class="logo pull-left"><img src="{{ url('public/user/img/logo.png')}}" alt="ShopDC" title="ShopDC"></a>
 				<!-- Top Nav Start -->
 				<div class="pull-left">
 					<div class="navbar" id="topnav">
 						<div class="navbar-inner">
 							<ul class="nav" >
-								<li><a class="home active" href="#">Home</a>
-								</li>
-								<li><a class="myaccount" href="#">My Account</a>
-								</li>
-								<li><a class="shoppingcart" href="#">Shopping Cart</a>
-								</li>
-								<li><a class="checkout" href="#">CheckOut</a>
-								</li>
+								<li><a class="home active" href="{{ url('/') }}">Trang chủ</a></li>
+								<!--<li><a class="myaccount" href="#">My Account</a></li>-->
+								<li><a class="shoppingcart" href="{{ url('/gio-hang') }}">Giỏ hàng</a></li>
+								<li><a class="checkout" href="#">Thanh toán</a></li>
 							</ul>
 						</div>
 					</div>
@@ -23,12 +19,12 @@
 				<ul class="pull-right">
 					<!-- Authentication Links -->
 					@if (Auth::guest())
-						<li><a href="{{ url('/login') }}">Login</a></li>
-						<li><a href="{{ url('/register') }}">Register</a></li>
+						<li><a href="{{ url('/login') }}">Đăng nhập</a></li>
+						<li><a href="{{ url('/register') }}">Đăng ký</a></li>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-								{{ Auth::user()->name }} <span class="caret"></span>
+								{{ Auth::user()->username }} <span class="caret"></span>
 							</a>
 
 							<ul class="dropdown-menu" role="menu">

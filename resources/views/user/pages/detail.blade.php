@@ -48,7 +48,7 @@
                   <span class="spiral"></span>{!! number_format($product_detail->price, 0, ',', '.') !!}</div>
               </div>
               <ul class="productpagecart">
-                <li><a class="cart" href="#">Add to Cart</a>
+                <li><a class="cart" href="{!! url('mua-hang', [$product_detail->id, $product_detail->alias]) !!}">Add to Cart</a>
                 </li>
               </ul>
          <!-- Product Description tab & comments-->
