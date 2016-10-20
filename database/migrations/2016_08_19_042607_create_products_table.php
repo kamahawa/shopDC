@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
 			$table->string('image');
 			$table->string('keywords');
 			$table->string('description');
-			$table->boolean('status');
+			$table->boolean('status')->default (1);
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 			$table->integer('cate_id')->unsigned();

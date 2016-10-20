@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2016 at 09:52 AM
+-- Generation Time: Oct 20, 2016 at 05:33 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -34,7 +34,7 @@ CREATE TABLE `cates` (
   `parent_id` int(11) NOT NULL,
   `keywords` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -44,11 +44,11 @@ CREATE TABLE `cates` (
 --
 
 INSERT INTO `cates` (`id`, `name`, `alias`, `order`, `parent_id`, `keywords`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Mỹ Phẩm', 'my-pham', 0, 0, 'Mỹ phẩm online', 'Mỹ phẩm online', 1, '2016-10-17 18:54:13', '2016-10-17 18:54:13'),
-(2, 'Quần áo', 'quan-ao', 0, 0, 'Quần áo online', 'Quần áo online', 1, '2016-10-17 18:54:49', '2016-10-18 01:57:14'),
-(3, 'Kem', 'kem', 1, 1, 'Kem trắng da, kem trị mụn, kem trị nám, kem dưỡng da', 'Kem trắng da, Kem trị mụn, kem trị nám, kem dưỡng da', 1, '2016-10-17 18:58:26', '2016-10-17 18:58:26'),
-(5, 'Đồ bay', 'do-bay', 1, 2, 'Đồ bay', 'Đồ bay', 1, '2016-10-17 19:02:28', '2016-10-17 19:02:28'),
-(6, 'Đầm', 'dam', 1, 2, 'Đầm online', 'Đầm online', 1, '2016-10-17 19:03:03', '2016-10-17 19:03:03');
+(1, 'Mỹ Phẩm', 'my-pham', 0, 0, 'Mỹ phẩm online', 'Mỹ phẩm online', 1, '2016-10-17 11:54:13', '2016-10-17 11:54:13'),
+(2, 'Quần áo', 'quan-ao', 0, 0, 'Quần áo online', 'Quần áo online', 1, '2016-10-17 11:54:49', '2016-10-17 18:57:14'),
+(3, 'Kem', 'kem', 1, 1, 'Kem trắng da, kem trị mụn, kem trị nám, kem dưỡng da', 'Kem trắng da, Kem trị mụn, kem trị nám, kem dưỡng da', 1, '2016-10-17 11:58:26', '2016-10-17 11:58:26'),
+(5, 'Đồ bay', 'do-bay', 1, 2, 'Đồ bay', 'Đồ bay', 1, '2016-10-17 12:02:28', '2016-10-17 12:02:28'),
+(6, 'Đầm', 'dam', 1, 2, 'Đầm online', 'Đầm online', 1, '2016-10-17 12:03:03', '2016-10-17 12:03:03');
 
 -- --------------------------------------------------------
 
@@ -70,7 +70,8 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2014_10_12_100000_create_password_resets_table', 1),
 ('2016_08_19_041717_create_cates_table', 1),
 ('2016_08_19_042607_create_products_table', 1),
-('2016_08_19_043258_create_product_images_table', 1);
+('2016_08_19_043258_create_product_images_table', 1),
+('2016_10_19_085203_create_shoppingcart_table', 1);
 
 -- --------------------------------------------------------
 
@@ -100,7 +101,7 @@ CREATE TABLE `products` (
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `keywords` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `user_id` int(10) UNSIGNED NOT NULL,
   `cate_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -112,12 +113,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `alias`, `price`, `intro`, `content`, `image`, `keywords`, `description`, `status`, `user_id`, `cate_id`, `created_at`, `updated_at`) VALUES
-(2, 'Kem trắng da BB', 'kem-trang-da-bb', 3000000, 'Kem trắng da BB', 'Kem trắng da BB\r\nLàm trắng da trong 7 tuần', 'kem-duong-trang-diem-body-cream-bb1(1).png', 'Kem trắng da BB , kem trắng da , kem trắng da online', 'Kem trắng da BB , kem trắng da , kem trắng da online', 1, 2, 3, '2016-10-17 19:51:45', '2016-10-17 19:51:45'),
-(3, 'Đồ bay da beo', 'do-bay-da-beo', 220000, '<p><em><strong><span style="color:#FF0000">Đồ bay da beo</span></strong></em></p>\r\n', '<p>Đồ bay da beo</p>\r\n', 'dobay.jpg', 'Đồ bay da beo', 'Đồ bay da beo', 1, 2, 5, '2016-10-17 19:55:46', '2016-10-17 20:06:17'),
-(8, 'Đầm', 'dam', 2000000, '<p>Đầm</p>\r\n', '<p>Đầm</p>\r\n', '9242b501769f8f2c433d40b523e0e006.jpg', 'Đầm', 'Đầm', 1, 2, 6, '2016-10-17 20:52:49', '2016-10-19 07:00:03'),
-(9, 'Đầm body denim kèm áo sọc', 'dam-body-denim-kem-ao-soc', 425000, '<h1>Đầm body denim k&egrave;m &aacute;o sọc</h1>\r\n', '<h1>Đầm body denim k&egrave;m &aacute;o sọc</h1>\r\n', '42d1f1fa22820d5ae7d44dcbaad194e4.jpg', 'Đầm body denim kèm áo sọc', 'Đầm body denim kèm áo sọc', 1, 1, 6, '2016-10-19 00:01:56', '2016-10-19 00:01:56'),
-(10, 'Đầm xòe thắt nơ phối ren', 'dam-xoe-that-no-phoi-ren', 290000, '<h1>Đầm x&ograve;e thắt nơ phối ren</h1>\r\n', '<h1>Đầm x&ograve;e thắt nơ phối ren</h1>\r\n', '9d9ab0d59a8f00d15e3c311dd6fcedfc.jpg', 'Đầm xòe thắt nơ phối ren', 'Đầm xòe thắt nơ phối ren', 1, 1, 6, '2016-10-19 00:05:17', '2016-10-19 00:05:17'),
-(11, 'Đầm ren 2 dây sang trọng', 'dam-ren-2-day-sang-trong', 390000, '<h1>Đầm ren 2 d&acirc;y sang trọng</h1>\r\n', '<h1>Đầm ren 2 d&acirc;y sang trọng</h1>\r\n', '7164e2a73d78294e703d38dbf94a8594.jpg', 'Đầm ren 2 dây sang trọng', 'Đầm ren 2 dây sang trọng', 1, 1, 6, '2016-10-19 00:11:00', '2016-10-19 00:11:00');
+(2, 'Kem trắng da BB', 'kem-trang-da-bb', 3000000, 'Kem trắng da BB', 'Kem trắng da BB\r\nLàm trắng da trong 7 tuần', 'kem-duong-trang-diem-body-cream-bb1(1).png', 'Kem trắng da BB , kem trắng da , kem trắng da online', 'Kem trắng da BB , kem trắng da , kem trắng da online', 1, 2, 3, '2016-10-17 12:51:45', '2016-10-17 12:51:45'),
+(3, 'Đồ bay da beo', 'do-bay-da-beo', 220000, '<p><em><strong><span style="color:#FF0000">Đồ bay da beo</span></strong></em></p>\r\n', '<p>Đồ bay da beo</p>\r\n', 'dobay.jpg', 'Đồ bay da beo', 'Đồ bay da beo', 1, 2, 5, '2016-10-17 12:55:46', '2016-10-17 13:06:17'),
+(8, 'Đầm', 'dam', 2000000, '<p>Đầm</p>\r\n', '<p>Đầm</p>\r\n', '9242b501769f8f2c433d40b523e0e006.jpg', 'Đầm', 'Đầm', 1, 2, 6, '2016-10-17 13:52:49', '2016-10-19 00:00:03');
 
 -- --------------------------------------------------------
 
@@ -128,7 +126,7 @@ INSERT INTO `products` (`id`, `name`, `alias`, `price`, `intro`, `content`, `ima
 CREATE TABLE `product_images` (
   `id` int(10) UNSIGNED NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `product_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -139,18 +137,28 @@ CREATE TABLE `product_images` (
 --
 
 INSERT INTO `product_images` (`id`, `image`, `status`, `product_id`, `created_at`, `updated_at`) VALUES
-(1, 'kem.jpg', 1, 2, '2016-10-17 19:51:45', '2016-10-17 19:51:45'),
-(2, 'kem1.jpg', 1, 2, '2016-10-17 19:51:45', '2016-10-17 19:51:45'),
-(3, 'dobay1.jpg', 1, 3, '2016-10-17 19:55:46', '2016-10-17 19:55:46'),
-(4, 'dobay2.jpg', 1, 3, '2016-10-17 19:55:46', '2016-10-17 19:55:46'),
-(10, '9242b501769f8f2c433d40b523e0e0060.jpg', 1, 8, '2016-10-17 20:52:49', '2016-10-17 20:52:49'),
-(11, '9242b501769f8f2c433d40b523e0e0062.jpg', 1, 8, '2016-10-17 20:52:49', '2016-10-17 20:52:49'),
-(15, '9242b501769f8f2c433d40b523e0e0061616161610101818041040am0.jpg', 1, 8, '2016-10-17 21:12:40', '2016-10-17 21:12:40'),
-(16, '9242b501769f8f2c433d40b523e0e0061616161610101818041006am0.jpg', 1, 8, '2016-10-17 21:13:06', '2016-10-17 21:13:06'),
-(17, '42d1f1fa22820d5ae7d44dcbaad194e416101919071056am0.jpg', 1, 9, '2016-10-19 00:01:56', '2016-10-19 00:01:56'),
-(18, '9d9ab0d59a8f00d15e3c311dd6fcedfc16101919071017am0.jpg', 1, 10, '2016-10-19 00:05:17', '2016-10-19 00:05:17'),
-(19, '9d9ab0d59a8f00d15e3c311dd6fcedfc16101919071017am1.jpg', 1, 10, '2016-10-19 00:05:17', '2016-10-19 00:05:17'),
-(20, '7164e2a73d78294e703d38dbf94a859416101919071000am0.jpg', 1, 11, '2016-10-19 00:11:00', '2016-10-19 00:11:00');
+(1, 'kem.jpg', 1, 2, '2016-10-17 12:51:45', '2016-10-17 12:51:45'),
+(2, 'kem1.jpg', 1, 2, '2016-10-17 12:51:45', '2016-10-17 12:51:45'),
+(3, 'dobay1.jpg', 1, 3, '2016-10-17 12:55:46', '2016-10-17 12:55:46'),
+(4, 'dobay2.jpg', 1, 3, '2016-10-17 12:55:46', '2016-10-17 12:55:46'),
+(10, '9242b501769f8f2c433d40b523e0e0060.jpg', 1, 8, '2016-10-17 13:52:49', '2016-10-17 13:52:49'),
+(11, '9242b501769f8f2c433d40b523e0e0062.jpg', 1, 8, '2016-10-17 13:52:49', '2016-10-17 13:52:49'),
+(15, '9242b501769f8f2c433d40b523e0e0061616161610101818041040am0.jpg', 1, 8, '2016-10-17 14:12:40', '2016-10-17 14:12:40'),
+(16, '9242b501769f8f2c433d40b523e0e0061616161610101818041006am0.jpg', 1, 8, '2016-10-17 14:13:06', '2016-10-17 14:13:06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shoppingcart`
+--
+
+CREATE TABLE `shoppingcart` (
+  `identifier` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `instance` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -163,8 +171,8 @@ CREATE TABLE `users` (
   `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `level` tinyint(4) NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `level` tinyint(4) NOT NULL DEFAULT '3',
+  `status` tinyint(1) NOT NULL DEFAULT '1',
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -175,10 +183,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `level`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'mod', '$2y$10$yWi94muGjB0LjE4jIOF9GuggD5O3TizFW/ABHHGTNONE5q/UrrH3S', 'test@gmail.com', 2, 1, 'TAyMUQq0mUMWz2OGXtt7Z9KYWiBkiqYerpli9ZoIll2Wwk7M2hBw4ZOOvpM4', '2016-08-24 19:25:06', '2016-08-30 19:17:38'),
-(2, 'admin', '$2y$10$qrklVRnnK4O3bITehWk04.QH.mvPoIqrB1.uhHPR9/nVpAdtIN2fO', 'admin@gmail.com', 1, 1, 'lD8Zygnh4GhUf3S2SNlR76yys5Y8JaQDRbiezZbKQhA9q0JN06WohISBwrsJ', '2016-08-28 14:44:56', '2016-10-18 19:27:46'),
-(3, 'member', '$2y$10$qrklVRnnK4O3bITehWk04.QH.mvPoIqrB1.uhHPR9/nVpAdtIN2fO', 'member@gmail.com', 3, 1, 'oIle2pHC9XxbYcPmlJdvvS7T9irbIDKCObpWrFFAPhKpVo7wr7EheK4lQgLX', '2016-08-28 14:45:37', '2016-08-31 01:26:22'),
-(6, 'mod 1', '$2y$10$FRyukgW/JFV45eqS6tudLu1GPZZ29cfg0YrhAaHEWADe15yXWcYXO', 'mod1@gmail.com', 2, 0, 'jdgMtRI35CZwwqPbhHhDOqNyHmIlzNeZxKQZIkNN', '2016-10-17 21:38:59', '2016-10-17 21:44:05');
+(1, 'mod', '$2y$10$yWi94muGjB0LjE4jIOF9GuggD5O3TizFW/ABHHGTNONE5q/UrrH3S', 'test@gmail.com', 2, 1, 'TAyMUQq0mUMWz2OGXtt7Z9KYWiBkiqYerpli9ZoIll2Wwk7M2hBw4ZOOvpM4', '2016-08-24 12:25:06', '2016-08-30 12:17:38'),
+(2, 'admin', '$2y$10$qrklVRnnK4O3bITehWk04.QH.mvPoIqrB1.uhHPR9/nVpAdtIN2fO', 'admin@gmail.com', 1, 1, 'lD8Zygnh4GhUf3S2SNlR76yys5Y8JaQDRbiezZbKQhA9q0JN06WohISBwrsJ', '2016-08-28 07:44:56', '2016-10-18 12:27:46'),
+(3, 'member', '$2y$10$qrklVRnnK4O3bITehWk04.QH.mvPoIqrB1.uhHPR9/nVpAdtIN2fO', 'member@gmail.com', 3, 1, 'oIle2pHC9XxbYcPmlJdvvS7T9irbIDKCObpWrFFAPhKpVo7wr7EheK4lQgLX', '2016-08-28 07:45:37', '2016-08-30 18:26:22'),
+(6, 'mod 1', '$2y$10$FRyukgW/JFV45eqS6tudLu1GPZZ29cfg0YrhAaHEWADe15yXWcYXO', 'mod1@gmail.com', 2, 0, 'jdgMtRI35CZwwqPbhHhDOqNyHmIlzNeZxKQZIkNN', '2016-10-17 14:38:59', '2016-10-17 14:44:05'),
+(7, 'member1', '$2y$10$qetAQig4aPqNyEnCCsOjce3/6i8QfPCF5GMokBy1QlSA.mwdM914K', 'member1@shopdc.com', 3, 1, NULL, '2016-10-19 20:29:26', '2016-10-19 20:29:26');
 
 --
 -- Indexes for dumped tables
@@ -215,6 +224,12 @@ ALTER TABLE `product_images`
   ADD KEY `product_images_product_id_foreign` (`product_id`);
 
 --
+-- Indexes for table `shoppingcart`
+--
+ALTER TABLE `shoppingcart`
+  ADD PRIMARY KEY (`identifier`,`instance`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -245,7 +260,7 @@ ALTER TABLE `product_images`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- Constraints for dumped tables
 --

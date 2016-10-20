@@ -43,7 +43,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'level.mod']], funct
 		Route::get('delImg/{id}', ['as' => 'admin.product.getDelImg', 'uses' => 'ProductController@getDelImg']);
 	});
 
-	Route::group(['prefix' => 'user'], function () {
+	Route::group(['prefix' => 'user', 'middleware' => ['level.admin']], function () {
 		Route::get('list', ['as' => 'admin.user.list', 'uses' => 'UserController@getList']);
 		Route::get('add', ['as' => 'admin.user.getAdd', 'uses' => 'UserController@getAdd']);
 		Route::post('add', ['as' => 'admin.user.postAdd', 'uses' => 'UserController@postAdd']);
