@@ -5,13 +5,16 @@
     <title>Shop DC</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="@yield('description')">
-    <meta name="author" content="Kama hawa">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet' type='text/css'>
+    <meta name="author" content="Kama hawa">	
+	<!-- CSRF Token -->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300italic,400italic,600,600italic' rel='stylesheet'
+          type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link href="{{ url('public/user/css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{ url('public/user/css/bootstrap-responsive.css')}}" rel="stylesheet">
     <link href="{{ url('public/user/css/style.css')}}" rel="stylesheet">
-    <link href="{{ url('public/user/css/flexslider.css')}}" type="text/css" media="screen" rel="stylesheet"  />
+    <link href="{{ url('public/user/css/flexslider.css')}}" type="text/css" media="screen" rel="stylesheet"/>
     <link href="{{ url('public/user/css/jquery.fancybox.css')}}" rel="stylesheet">
     <link href="{{ url('public/user/css/cloud-zoom.css')}}" rel="stylesheet">
     <link href="{{ url('public/css/common.css')}}" rel="stylesheet">
@@ -19,57 +22,50 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <!-- fav -->
-    <link rel="shortcut icon" href="assets/ico/favicon.html">
+    <link rel="stylesheet" href="{{ url('public/wow/css/libs/animate.css')}}">
+    <style>
+        .wow:first-child {
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Start -->
-    <header>
-        @include('user.blocks.header')
-        <div class="container">
-            @include('user.blocks.nav')
-        </div>
-    </header>
-    <!-- Header End -->
+<!-- Header Start -->
+<header>
+    @include('user.blocks.header')
+</header>
+<!-- Header End -->
 
-    <div id="maincontainer">
-        <!-- Slider Start-->
-        @include('user.blocks.slider')
-        <!-- Slider End-->
-
-        <!-- Section Start-->
-        @include('user.blocks.otherdetail')
-        <!-- Section End-->
-
-        @yield('content')
-
-        <!-- Footer -->
-        <footer id="footer">
-            <section class="footersocial">
-                <div class="container">
-                    <div class="row">
-                        <div class="span3 aboutus">
-                            <h2>Thông tin</h2>
-                            <p> Shop bán hàng online đa dạng mặt hàng và uy tín</p>
-                        </div>
-                        <div class="span3 contact">
-                            <h2>Liên hệ</h2>
-                            <ul>
-                                <li class="mobile"> Huy Cường : 0977 538 528</li>
-                                <li class="mobile"> Bích Diệp : 0169 996 60 840</li>
-                                <li class="email"> kamahawa@gmail.com</li>
-                            </ul>
-                        </div>
-                        <div class="span3 twitter">
-                            <h2>FACEBOOK </h2>
-                            <div id="footersocial">
-                                <a href="https://www.facebook.com/DC-948074798672646/" target="_blank" title="Facebook" class="facebook">Facebook</a>
-                            </div>
+<div id="maincontainer">
+@yield('content')
+<!-- Footer -->
+    <footer id="footer">
+        <section class="footersocial">
+            <div class="container">
+                <div class="row">
+                    <div class="span4 aboutus">
+                        <h2>Thông tin</h2>
+                        <p> Shop bán hàng online đa dạng mặt hàng và uy tín</p>
+                    </div>
+                    <div class="span4 contact">
+                        <h2>Liên hệ</h2>
+                        <ul>
+                            <li class="mobile"> Huy Cường : 0977 538 528</li>
+                            <li class="mobile"> Bích Diệp : 0169 996 60 840</li>
+                            <li class="email"> kamahawa@gmail.com</li>
+                        </ul>
+                    </div>
+                    <div class="span4 twitter">
+                        <h2>FACEBOOK </h2>
+                        <div id="footersocial">
+                            <a href="https://www.facebook.com/DC-948074798672646/" target="_blank" title="Facebook"
+                               class="facebook">Facebook</a>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!--
+            </div>
+        </section>
+        <!--
             <section class="footerlinks">
                 <div class="container">
                     <div class="info">
@@ -103,28 +99,40 @@
                     </div>
                 </div>
             </section>
-            -->
-        </footer>
+        -->
+    </footer>
 
-    </div>
-    <!-- javascript
-        ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{{ url('public/user/js/jquery.js')}}"></script>
-    <script src="{{ url('public/user/js/bootstrap.js')}}"></script>
-    <script src="{{ url('public/user/js/respond.min.js')}}"></script>
-    <script src="{{ url('public/user/js/application.js')}}"></script>
-    <script src="{{ url('public/user/js/bootstrap-tooltip.js')}}"></script>
-    <script defer src="{{ url('public/user/js/jquery.fancybox.js')}}"></script>
-    <script defer src="{{ url('public/user/js/jquery.flexslider.js')}}"></script>
-    <script type="text/javascript" src="{{ url('public/user/js/jquery.tweet.js')}}"></script>
-    <script  src="{{ url('public/user/js/cloud-zoom.1.0.2.js')}}"></script>
-    <script  type="text/javascript" src="{{ url('public/user/js/jquery.validate.js')}}"></script>
-    <script type="text/javascript"  src="{{ url('public/user/js/jquery.carouFredSel-6.1.0-packed.js')}}"></script>
-    <script type="text/javascript"  src="{{ url('public/user/js/jquery.mousewheel.min.js')}}"></script>
-    <script type="text/javascript"  src="{{ url('public/user/js/jquery.touchSwipe.min.js')}}"></script>
-    <script type="text/javascript"  src="{{ url('public/user/js/jquery.ba-throttle-debounce.min.js')}}"></script>
-    <script defer src="{{ url('public/user/js/custom.js')}}"></script>
-    <script src="{{ url('public/user/js/myscript.js')}}"></script>
+</div>
+<!-- javascript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ url('public/user/js/jquery.js')}}"></script>
+<script src="{{ url('public/user/js/bootstrap.js')}}"></script>
+<script src="{{ url('public/user/js/respond.min.js')}}"></script>
+<script src="{{ url('public/user/js/application.js')}}"></script>
+<script src="{{ url('public/user/js/bootstrap-tooltip.js')}}"></script>
+<script defer src="{{ url('public/user/js/jquery.fancybox.js')}}"></script>
+<script defer src="{{ url('public/user/js/jquery.flexslider.js')}}"></script>
+<script type="text/javascript" src="{{ url('public/user/js/jquery.tweet.js')}}"></script>
+<script src="{{ url('public/user/js/cloud-zoom.1.0.2.js')}}"></script>
+<script type="text/javascript" src="{{ url('public/user/js/jquery.validate.js')}}"></script>
+<script type="text/javascript" src="{{ url('public/user/js/jquery.carouFredSel-6.1.0-packed.js')}}"></script>
+<script type="text/javascript" src="{{ url('public/user/js/jquery.mousewheel.min.js')}}"></script>
+<script type="text/javascript" src="{{ url('public/user/js/jquery.touchSwipe.min.js')}}"></script>
+<script type="text/javascript" src="{{ url('public/user/js/jquery.ba-throttle-debounce.min.js')}}"></script>
+<script defer src="{{ url('public/user/js/custom.js')}}"></script>
+<script src="{{ url('public/user/js/myscript.js')}}"></script>
+
+<script src="{{ url('public/wow/dist/wow.js')}}"></script>
+<script>
+    new WOW().init();
+    /*
+     document.getElementById('moar').onclick = function() {
+     var section = document.createElement('section');
+     section.className = 'section--purple wow fadeInDown';
+     this.parentNode.insertBefore(section, this);
+     };
+     */
+</script>
 </body>
 </html>

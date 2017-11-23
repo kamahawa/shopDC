@@ -30,7 +30,7 @@ ul, ul li {
 .heading1 {
 	margin-bottom: 40px;
 	border-bottom: 1px solid #efefef;
-	margin-top: 0px;
+	margin-top: 20px;
 	font-size: 34px
 }
 
@@ -53,11 +53,12 @@ ul, ul li {
 }
 
 .heading1 .maintext {
-	font-size: 28px;
-	color: #5e626b;
+	font-size: 40px;
+	font-weight: bold;
+	color: #000;
 	text-transform: uppercase;
 	padding: 0px 14px 4px 0;
-	font-family: 'Crete Round', serif;
+	/*font-family: 'Crete Round', serif;*/
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -141,12 +142,10 @@ input:focus:invalid, textarea:focus:invalid, select:focus:invalid {
 /* ------------ Header ------------ */
 .headerstrip {
 	height: 72px;
-	background: #f25c27
 }
 
 .logo {
 	width: 272px;
-	background-color: #fff;
 	text-align: center;
 	height: 72px;
 	line-height: 72px
@@ -173,9 +172,9 @@ input:focus:invalid, textarea:focus:invalid, select:focus:invalid {
 	color: #fff;
 	font-size: 14px;
 	text-transform: uppercase;
-	background-image: url(../img/sprite.png);
+	/*background-image: url(../img/sprite.png);
 	background-repeat: no-repeat;
-	background-color: transparent;
+	background-color: transparent;*/
 	padding: 0 0 0 25px;
 	margin-right: 22px
 }
@@ -414,7 +413,7 @@ ul.categorymenu > li > div {
 }
 
 .dropdown-menu {
-	padding: 15px;
+	padding: 15px !important;
 	position: absolute;
 	top: 97%;
 	left: 7px;
@@ -424,9 +423,8 @@ ul.categorymenu > li > div {
 	min-width: 120px;
 	margin: 1px 0 0;
 	list-style: none;
-	background-color: #ffffff;
+	background-color: #000;
 	border: 1px solid #DDDDDD;
-	border-bottom: 4px solid #F25C27;
 	border-radius: 0;
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0
@@ -575,7 +573,7 @@ ul.categorymenu > li ul > li img {
 
 /* ------------ Featured Proudcts ------------ */
 #categorymenu {
-	margin: 40px 0 50px 0
+	/*margin: 40px 0 50px 0*/
 }
 
 #featured:after, #latest:after, #related:after, #category:after, #popularbrands:after, #newslettersignup .container:after {
@@ -670,10 +668,8 @@ ul.categorymenu > li ul > li img {
 	width: 221px;
 	height: 37px;
 	background: url(../img/pricetag.png) no-repeat right 0;
-	margin-top: 8px;
 	position: relative;
 	padding: 9px 9px 9px 40px;
-	margin-bottom: 20px
 }
 
 .thumbnail .pricetag .spiral {
@@ -686,7 +682,7 @@ ul.categorymenu > li ul > li img {
 }
 
 .thumbnail a.productcart {
-	background: #f25c27 url(../img/prodcutcart.png) right 7px no-repeat;
+	background: #808080 url(../img/prodcutcart.png) right 7px no-repeat;
 	color: #fff;
 	float: right;
 	padding: 8px 27px 8px 8px;
@@ -694,7 +690,7 @@ ul.categorymenu > li ul > li img {
 }
 
 .thumbnail a.productcart:hover {
-	background: #db420e url(../img/prodcutcart.png) right 7px no-repeat;
+	background: #898980 url(../img/prodcutcart.png) right 7px no-repeat;
 }
 
 .thumbnail .shortlinks {
@@ -1070,7 +1066,7 @@ ul.productpagecart li {
 }
 
 .productpagecart a {
-	background: #F25C27 url(../img/productpageicon.png) no-repeat 0 0;
+	background: #808080 url(../img/productpageicon.png) no-repeat 0 0;
 	color: #fff;
 	padding: 15px 15px 15px 60px;
 	font-size: 18px;
@@ -1089,7 +1085,7 @@ ul.productpagecart li {
 }
 
 .productpagecart li a:hover {
-	background-color: #d8420e
+	background-color: #898980;
 }
 
 .selectsize {
@@ -2053,9 +2049,8 @@ a.clostalert {
 }
 
 .contact ul li {
-	background: url(../img/sprite.png) no-repeat 0 0;
-	padding: 0px 0 0 32px;
-	height: 53px
+	background: url(../img/sprite.png) no-repeat 10px 10px;
+	padding: 10px 0 10px 32px;
 }
 
 .contact ul li.phone {
@@ -2131,14 +2126,13 @@ a.tweet_avatar {
 /* footersocial  */
 .footersocial {
 	padding: 30px 0 40px;
-	background: #FDEECE;
-	color: #5E626B
+	color: #ffffff;
 }
 
 .footersocial h2 {
 	margin-bottom: 30px;
 	font-size: 18px;
-	color: #5e626b;
+	color: #ffffff;
 	text-transform: uppercase;
 	border-bottom: 1px dashed #999;
 	padding: 0 0 5px 0
@@ -2456,7 +2450,6 @@ a.tweet_avatar {
 	}
 
 	.headerstrip #topnav {
-		background: #F25C27;
 		padding-bottom: 10px
 	}
 
@@ -2618,7 +2611,7 @@ input.search-query, .btn, .label, .badge, .nav-pills > li > a {
 .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
 	color: #ffffff;
 	text-decoration: none;
-	background: #F25C27;
+	background: #cccccc;
 }
 
 .dropdown-menu .active > a, .dropdown-menu .active > a:hover {

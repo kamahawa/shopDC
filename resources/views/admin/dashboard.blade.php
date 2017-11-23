@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Home')
+@section('title', 'Dashboard')
 @section('content')
 	<div class="row">
 		<div class="col-xs-12 col-md-6 col-lg-3">

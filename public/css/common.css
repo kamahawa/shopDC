@@ -1,21 +1,45 @@
-.btn-custom-width-100{
-	width: 100px;
+@charset "UTF-8";
+body {
+    background: #DCD4C9;
+    color: #717070;
 }
-.btn-custom-width-200{
-	width: 200px;
+
+header, footer{
+    background: #000000;
 }
-.margin-top-15{
-	margin-top: 15px;
+
+.nav li a:hover{
+    background: #fff;
+    color: #000;
 }
-.img-category{
+
+.btn-custom-width-100 {
+    width: 100px;
+}
+
+.btn-custom-width-200 {
+    width: 200px;
+}
+
+.margin-top-15 {
+    margin-top: 15px;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+}
+
+.img-category {
     height: 250px;
     width: auto;
     max-width: 300px;
 }
-.img-width-height-50{
+
+.img-width-height-50 {
     height: 50px !important;
     width: 50px !important;
 }
-.thumbnail{
+
+.thumbnail {
     text-align: center;
 }

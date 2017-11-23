@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\RegisterRequest;
 use App\User;
+use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -73,4 +76,12 @@ class RegisterController extends Controller
 			'status' => 1,//mac dinh la duoc su dung
         ]);
     }
+
+    public function register(RegisterRequest $request)
+	{
+		if($this->create(array('username' => $request->username, 'email' => $request->email, 'password' => $request->password)))
+		{
+			return redirect()->route('login');
+		}
+	}
 }

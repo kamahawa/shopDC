@@ -20,7 +20,14 @@ Auth::routes();
 
 Route::get('/', 'WelcomeController@index');
 Route::get('logout', 'Auth\LoginController@logout');
+Route::get('admin', 'Auth\LoginController@showLoginForm');
+Route::post('admin', 'Auth\LoginController@login');
+//Route::post('login', 'Auth\LoginController@login');//kiem tra login o day
+Route::post('register', 'Auth\RegisterController@register');// tao dang nhap
 
+Route::get('/test', function () {
+	return view('user/storefront/index');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'level.mod']], function () {
 //Route::group(['prefix' => 'admin'], function (){
@@ -52,7 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'level.mod']], funct
 		Route::post('edit/{id}', ['as' => 'admin.user.postEdit', 'uses' => 'UserController@postEdit']);
 	});
 
-	Route::get('home', 'HomeController@index');
+	Route::get('dashboard', ['as' => 'admin.dashboard', 'uses' => 'HomeController@index']);
 });
 
 Route::get('loai-san-pham/{id}/{tenloai}', ['as' => 'loaisanpham', 'uses' => 'WelcomeController@loaisanpham']);

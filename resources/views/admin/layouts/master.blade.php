@@ -61,7 +61,7 @@
 			</div>
 		</form>
 		<ul class="nav menu">
-			<li id="homeMenu"><a href="{{ url('/admin/home') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> Home</a></li>
+			<li id="homeMenu"><a href="{{ url('/admin/dashboard') }}"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg> Dashboard</a></li>
 			<li id="cateMenu"><a href="{{ url('/admin/cate/list') }}"><svg class="glyph stroked clipboard-with-paper"><use xlink:href="#stroked-clipboard-with-paper"></use></svg>Category</a></li>
 			<li id="productMenu"><a href="{{ url('/admin/product/list') }}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>Product</a></li>
 			<!--<li><a href="{{ url('/admin/prduct/list') }}"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>Product Image</a></li>-->

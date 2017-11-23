@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,11 +27,13 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home';
+    protected $redirectTo = '/admin/dashboard';
 
 	protected $username = 'username';
 
-	protected $redirectAfterLogout = '/login';
+	protected $redirectAfterLogout = '/admin';
+
+	protected $loginPath = 'admin';
 
 
 	/**
@@ -74,5 +78,16 @@ class LoginController extends Controller
 		]);
 	}
 
-
+	//check login
+	public function login(LoginRequest $request)
+	{
+		if(Auth::attempt(['username' => $request->username, 'password' => $request->password]))
+		{
+			return redirect()->route('admin.dashboard');
+		}
+		else
+		{
+			return redirect()->back();
+		}
+	}
 }
